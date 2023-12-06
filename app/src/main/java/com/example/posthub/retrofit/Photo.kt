@@ -1,11 +1,13 @@
 package com.example.posthub.retrofit
 
-data class Post(
+import com.squareup.moshi.Json
+
+data class Photo(
     val id: String,
     val author: String,
     val width: Int,
     val height: Int,
     val url: String,
-    val download_url: String
+    @Json(name = "download_url") val downloadUrl: String
 )
 
