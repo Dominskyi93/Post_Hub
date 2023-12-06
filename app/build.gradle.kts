@@ -1,3 +1,4 @@
+
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
@@ -5,6 +6,10 @@ plugins {
     id("kotlin-kapt")
     id("androidx.navigation.safeargs.kotlin")
     id("dagger.hilt.android.plugin")
+}
+
+kotlin {
+    jvmToolchain(17)
 }
 
 android {
@@ -26,7 +31,6 @@ android {
 
     buildFeatures {
         viewBinding = true
-        compose = true
     }
 
     buildTypes {
@@ -39,11 +43,11 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_18
-        targetCompatibility = JavaVersion.VERSION_18
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
     kotlinOptions {
-        jvmTarget = "18"
+        jvmTarget = "17"
     }
 
     composeOptions {
@@ -84,10 +88,7 @@ dependencies {
 
     // Hilt
     val hiltVersion = "2.49"
-    implementation("com.google.dagger:hilt-android:$hiltVersion") {
-        exclude(group = "javax.activation", module = "javax.activation-api")
-        exclude(group = "com.sun.activation", module = "javax.activation")
-    }
+    implementation("com.google.dagger:hilt-android:$hiltVersion")
     kapt("com.google.dagger:hilt-compiler:$hiltVersion")
 
     //Retrofit + Moshi
@@ -95,21 +96,21 @@ dependencies {
     implementation("com.squareup.retrofit2:converter-moshi:2.9.0")
 
     //Compose
-    implementation("com.android.tools.build:gradle:4.2.1")
-    implementation("org.jetbrains.kotlin:kotlin-gradle-plugin:1.4.0")
-    implementation("androidx.activity:activity-compose:1.8.1")
-    implementation(platform("androidx.compose:compose-bom:2023.03.00"))
-    implementation("androidx.compose.ui:ui")
-    implementation("androidx.compose.ui:ui-graphics")
-    implementation("androidx.compose.ui:ui-tooling-preview")
-    implementation("androidx.compose.material3:material3")
-    androidTestImplementation(platform("androidx.compose:compose-bom:2023.03.00"))
-    androidTestImplementation("androidx.compose.ui:ui-test-junit4")
-    debugImplementation("androidx.compose.ui:ui-tooling")
-    debugImplementation("androidx.compose.ui:ui-test-manifest")
+//    implementation("com.android.tools.build:gradle:4.2.1")
+//    implementation("org.jetbrains.kotlin:kotlin-gradle-plugin:1.4.0")
+//    implementation("androidx.activity:activity-compose:1.8.1")
+//    implementation(platform("androidx.compose:compose-bom:2023.03.00"))
+//    implementation("androidx.compose.ui:ui")
+//    implementation("androidx.compose.ui:ui-graphics")
+//    implementation("androidx.compose.ui:ui-tooling-preview")
+//    implementation("androidx.compose.material3:material3")
+//    androidTestImplementation(platform("androidx.compose:compose-bom:2023.03.00"))
+//    androidTestImplementation("androidx.compose.ui:ui-test-junit4")
+//    debugImplementation("androidx.compose.ui:ui-tooling")
+//    debugImplementation("androidx.compose.ui:ui-test-manifest")
 }
 
-kapt {
-    correctErrorTypes = true
-    generateStubs = true
-}
+//kapt {
+//    correctErrorTypes = true
+//    generateStubs = true
+//}
