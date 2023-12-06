@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "31852715302",
+    "project_id": "posthub-61f82",
+    "storage_bucket": "posthub-61f82.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:31852715302:android:b826f4e452af15d97175e7",
+        "android_client_info": {
+          "package_name": "com.example.posthub"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyACWB0r69tp5B6YUHsQEXZgrswAQ7ztBr8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
