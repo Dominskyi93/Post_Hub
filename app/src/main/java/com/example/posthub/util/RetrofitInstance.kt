@@ -1,16 +1,17 @@
 package com.example.posthub.util
 
-import com.example.posthub.retrofit.PostApi
+import com.example.posthub.retrofit.PhotoApi
 import com.example.posthub.util.MoshiInstance.moshi
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 
 object RetrofitInstance {
-    val api: PostApi by lazy {
+    private const val BASE_URL = "https://picsum.photos/v2/"
+    val api: PhotoApi by lazy {
         Retrofit.Builder()
             .addConverterFactory(MoshiConverterFactory.create(moshi))
-            .baseUrl("https://picsum.photos/v2/")
+            .baseUrl(BASE_URL)
             .build()
-            .create(PostApi::class.java)
+            .create(PhotoApi::class.java)
     }
 }
