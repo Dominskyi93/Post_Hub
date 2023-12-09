@@ -1,5 +1,6 @@
 package com.example.posthub.model.room
 
+import android.app.Application
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
@@ -17,9 +18,9 @@ abstract class AppDatabase : RoomDatabase() {
     abstract fun getDao(): PostsDao
 
     companion object {
-        fun getDataBase(context: Context): AppDatabase {
+        fun getDataBase(application: Application): AppDatabase {
             return Room.databaseBuilder(
-                context.applicationContext,
+                application.applicationContext,
                 AppDatabase::class.java,
                 "posthub.db"
             ).build()

@@ -8,11 +8,10 @@ import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.posthub.R
-import com.example.posthub.core.ui.BaseFragment
+import com.example.posthub.core.ui.fragments.BaseFragment
 import com.example.posthub.data.AuthResult
 import com.example.posthub.databinding.FragmentAuthorizationBinding
 import dagger.hilt.android.AndroidEntryPoint
-
 
 @AndroidEntryPoint
 class AuthorizationFragment : BaseFragment<FragmentAuthorizationBinding>() {
@@ -59,6 +58,5 @@ class AuthorizationFragment : BaseFragment<FragmentAuthorizationBinding>() {
         binding.navigateToSignUp.setOnClickListener {
             findNavController().navigate(R.id.action_authorizationFragment_to_registrationFragment)
         }
-
     }
 }

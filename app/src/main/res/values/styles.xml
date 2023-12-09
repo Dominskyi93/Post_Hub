@@ -1,7 +1,12 @@
 <resources>
 
-    <style name="Widget.Theme.PostHub.ButtonBar.Fullscreen" parent="">
-        <item name="android:background">@color/black_overlay</item>
-        <item name="android:buttonBarStyle">?android:attr/buttonBarStyle</item>
+    <style name="AppTheme" parent="AppTheme.Base">
     </style>
+
+    <style name="AppTheme.Base" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:colorPrimary">@color/primary_color</item>
+        <item name="android:colorPrimaryDark">@color/dark_primary_color</item>
+        <item name="android:colorAccent">@color/accent_color</item>
+    </style>
+
 </resources>

@@ -7,7 +7,7 @@
 
         <variable
             name="viewModel"
-            type="com.example.posthub.core.ui.OverviewViewModel" />
+            type="com.example.posthub.core.ui.viewModels.CreatePostViewModel" />
     </data>
 
     <LinearLayout
@@ -17,34 +17,35 @@
 
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_posts_items"
+            android:id="@+id/rv_photos_items"
             android:layout_width="match_parent"
-            android:layout_height="435dp"
-            android:orientation="vertical"
+            android:layout_height="244dp"
+            android:orientation="horizontal"
+            android:layout_marginTop="64dp"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:listData="@{viewModel.photos}" />
 
-
-
-        <EditText
-            android:id="@+id/et_photo"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_colors_items"
             android:layout_width="match_parent"
-            android:layout_height="67dp"
-            android:ems="10"
-            android:hint="Photo"
-            android:inputType="text"
-            android:text="Name" />
+            android:layout_height="100dp"
+            android:orientation="horizontal"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+
         <EditText
             android:id="@+id/et_comment"
             android:layout_width="match_parent"
             android:layout_height="67dp"
-            android:hint="comment"
+            android:hint="Comment"
             android:ems="10"
-            android:inputType="text"
-            android:text="Name" />
+            android:inputType="text" />
 
 
         <Button
@@ -52,6 +53,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Save" />
+        <Button
+            android:id="@+id/b_cancel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Cancel" />
 
 
     </LinearLayout>

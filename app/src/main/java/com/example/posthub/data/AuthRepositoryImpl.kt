@@ -26,4 +26,9 @@ class AuthRepositoryImpl @Inject constructor(private val auth: FirebaseAuth) : A
             AuthResult.Error(e)
         }
     }
+
+    override fun signOut() {
+        auth.signOut()
+    }
+
 }

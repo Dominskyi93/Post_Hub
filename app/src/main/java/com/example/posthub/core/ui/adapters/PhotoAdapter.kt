@@ -1,4 +1,4 @@
-package com.example.posthub.core.ui
+package com.example.posthub.core.ui.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -8,8 +8,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.posthub.databinding.PhotoItemBinding
 import com.example.posthub.retrofit.Photo
 
-class PhotoAdapter : ListAdapter<Photo, PhotoAdapter.PostHolder>(DiffCallback) {
-    class PostHolder(private var binding: PhotoItemBinding) : RecyclerView.ViewHolder(binding.root) {
+class PhotoAdapter : ListAdapter<Photo, PhotoAdapter.PhotoViewHolder>(DiffCallback) {
+    class PhotoViewHolder(private var binding: PhotoItemBinding) : RecyclerView.ViewHolder(binding.root) {
         val commentTextView = binding.tvComment
         val createDate = binding.tvDate
         fun bind(photo: Photo) {
@@ -29,11 +29,11 @@ class PhotoAdapter : ListAdapter<Photo, PhotoAdapter.PostHolder>(DiffCallback) {
 
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PostHolder {
-        return PostHolder(PhotoItemBinding.inflate(LayoutInflater.from(parent.context)))
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PhotoViewHolder {
+        return PhotoViewHolder(PhotoItemBinding.inflate(LayoutInflater.from(parent.context)))
     }
 
-    override fun onBindViewHolder(holder: PostHolder, position: Int) = with(holder) {
+    override fun onBindViewHolder(holder: PhotoViewHolder, position: Int) = with(holder) {
         val photo = getItem(position)
         bind(photo)
         commentTextView.text = photo.author

@@ -1,4 +1,4 @@
-package com.example.posthub.core.ui
+package com.example.posthub.core.ui.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater

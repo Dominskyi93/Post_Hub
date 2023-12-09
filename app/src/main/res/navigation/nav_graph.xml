@@ -27,7 +27,7 @@
     </fragment>
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.example.posthub.core.ui.HomeFragment"
+        android:name="com.example.posthub.core.ui.fragments.HomeFragment"
         tools:layout="@layout/fragment_home">
 
         <action
@@ -37,7 +37,7 @@
 
     <fragment
         android:id="@+id/createPostFragment"
-        android:name="com.example.posthub.core.ui.CreatePostFragment"
+        android:name="com.example.posthub.core.ui.fragments.CreatePostFragment"
         tools:layout="@layout/fragment_create_post">
         <action
             android:id="@+id/action_createPostFragment_to_homeFragment"

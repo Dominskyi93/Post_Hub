@@ -1,4 +1,4 @@
-package com.example.posthub.core.ui
+package com.example.posthub.core.ui.viewModels
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
