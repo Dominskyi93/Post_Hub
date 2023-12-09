@@ -48,6 +48,7 @@
                 android:id="@+id/tv_comment"
                 android:layout_width="138dp"
                 android:layout_height="212dp"
+                android:layout_marginTop="10dp"
                 android:text="Comment"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/iv_photo"

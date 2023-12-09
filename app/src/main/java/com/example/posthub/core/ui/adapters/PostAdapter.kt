@@ -1,12 +1,15 @@
 package com.example.posthub.core.ui.adapters
 
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.fragment.app.ListFragment
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.posthub.R
+import com.example.posthub.core.ui.fragments.HomeFragmentDirections
 import com.example.posthub.databinding.PostItemBinding
 import com.example.posthub.model.entity.Post
 
@@ -43,8 +46,11 @@ class PostAdapter :
         val post = getItem(position)
         with(holder) {
             bind(post)
+            val bundle: Bundle = Bundle()
             container.setOnClickListener {
-                it.findNavController().navigate(R.id.action_homeFragment_to_createPostFragment)
+                val action = HomeFragmentDirections.actionHomeFragmentToCreatePostFragment(post)
+//                bundle.putParcelable("postArg", post)
+                it.findNavController().navigate(action)
             }
 //             cardView.setCardBackgroundColor(post.color)
             commentTextView.text = post.comment

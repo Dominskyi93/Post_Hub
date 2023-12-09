@@ -2,6 +2,7 @@ package com.example.posthub.core.di
 
 import android.app.Application
 import android.content.Context
+import com.example.posthub.model.room.AppDatabase
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
@@ -20,9 +21,17 @@ class AuthModule {
     fun provideFirebaseAuth(): FirebaseAuth {
         return Firebase.auth
     }
+
     @Provides
     @ApplicationContext
     fun provideAppContext(application: Application): Context {
         return application.applicationContext
     }
+
+//    @Provides
+//    @Singleton
+//    @ApplicationContext
+//    fun getDataBaseInstance(application: Application): AppDatabase {
+//        return AppDatabase.getDataBase(application)
+//    }
 }

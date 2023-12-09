@@ -42,5 +42,10 @@
         <action
             android:id="@+id/action_createPostFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
+
+        <!-- Додайте аргумент для цієї акції -->
+        <argument
+            android:name="postArg"
+            app:argType="com.example.posthub.model.entity.Post"/>
     </fragment>
 </navigation>

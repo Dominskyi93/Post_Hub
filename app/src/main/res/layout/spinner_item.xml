@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- res/layout/custom_spinner_item.xml -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="8dp">
+
+    <View
+        android:id="@+id/colorView"
+        android:layout_width="192dp"
+        android:layout_height="48dp"
+        android:layout_marginEnd="8dp"/>
+
+</LinearLayout>
