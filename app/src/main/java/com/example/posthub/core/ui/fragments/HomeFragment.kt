@@ -28,13 +28,10 @@ class HomeFragment : Fragment() {
 
         val layoutManager = LinearLayoutManager(requireContext())
         recyclerView.layoutManager = layoutManager
-
         recyclerView.adapter = PostAdapter()
-
         binding.fabAddPost.setOnClickListener {
             findNavController().navigate(R.id.action_homeFragment_to_createPostFragment)
         }
-
         return binding.root
     }
 }

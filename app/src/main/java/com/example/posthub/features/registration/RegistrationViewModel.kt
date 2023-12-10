@@ -12,5 +12,4 @@ class RegistrationViewModel @Inject constructor(private val authRepository: Auth
 
     override val sendRequest: suspend (String, String) -> AuthResult =
         { email, password -> authRepository.signUpWithEmailAndPassword(email, password) }
-
 }

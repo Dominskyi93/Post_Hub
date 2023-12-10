@@ -1,10 +1,8 @@
 package com.example.posthub.core.ui.adapters
 
-import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
-import androidx.fragment.app.ListFragment
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
@@ -16,6 +14,8 @@ import com.example.posthub.model.entity.Post
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 import java.util.Locale
+
+private const val DATE_PATTERN = "d MMM"
 
 class PostAdapter :
     ListAdapter<Post, PostAdapter.PostViewHolder>(DiffCallback) {
@@ -39,7 +39,6 @@ class PostAdapter :
         override fun areContentsTheSame(oldItem: Post, newItem: Post): Boolean {
             return oldItem.photo == newItem.photo
         }
-
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PostViewHolder {
@@ -50,28 +49,26 @@ class PostAdapter :
         val post = getItem(position)
         with(holder) {
             bind(post)
-            val bundle: Bundle = Bundle()
             container.setOnClickListener {
                 val action = HomeFragmentDirections.actionHomeFragmentToCreatePostFragment(post)
                 it.findNavController().navigate(action)
             }
-
             val color = try {
                 ContextCompat.getColor(holder.itemView.context, post.color)
             } catch (e: Exception) {
                 R.color.black
             }
-
             cardView.setCardBackgroundColor(color)
             commentTextView.text = post.comment
-            val date = formatLocalDate(post.date)
-            createDate.text = "Edit: $date"
-
+            val createDate = formatLocalDate(post.createDate)
+            val editDate = formatLocalDate(post.editDate)
+            this.createDate.text = if (post.editDate == null) createDate else "Edit: $editDate"
         }
     }
 
-    private fun formatLocalDate(localDate: LocalDate): String {
-        val formatter = DateTimeFormatter.ofPattern("d MMM", Locale.ENGLISH)
+    private fun formatLocalDate(localDate: LocalDate?): String {
+        if (localDate == null) return ""
+        val formatter = DateTimeFormatter.ofPattern(DATE_PATTERN, Locale.ENGLISH)
         return localDate.format(formatter)
     }
 }

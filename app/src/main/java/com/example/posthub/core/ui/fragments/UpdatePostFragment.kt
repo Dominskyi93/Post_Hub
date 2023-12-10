@@ -46,7 +46,6 @@ class UpdatePostFragment : Fragment() {
         rvPhotosAdapter.setOnItemClickListener(object : PhotoAdapter.OnItemClickListener {
             override fun onItemClick(photo: Photo) {
                 _selectedPhoto.value = photo.downloadUrl
-                toastMaker("Selected photo: ${photo.downloadUrl}")
             }
         })
 
@@ -74,20 +73,22 @@ class UpdatePostFragment : Fragment() {
             val newComment = binding.etComment.text.toString()
             val newColor = selectedColor.value!!.colorValue
             val photo: String = selectedPhoto.value ?: args.postArg?.photo ?: ""
+            val createDate = args.postArg?.createDate ?: LocalDate.now()
             val post = Post(
                 null,
                 photo,
                 newComment,
-                LocalDate.now(),
-                newColor
+                createDate,
+                newColor,
+                null
             )
             if (args.postArg?.id == null) {
                 createPost(post)
             } else {
+                post.editDate = LocalDate.now()
                 updatePost(post)
             }
         }
-
         return binding.root
     }
 
@@ -102,13 +103,13 @@ class UpdatePostFragment : Fragment() {
     private fun createPost(post: Post) {
         viewModel.insertData(post)
         navigateFromUpdateToHome()
-        toastMaker("Post added")
+        toastMaker(getString(R.string.post_added))
     }
 
-    private fun updatePost(post: Post){
+    private fun updatePost(post: Post) {
         post.id = args.postArg?.id
         viewModel.updateData(post)
         navigateFromUpdateToHome()
-        toastMaker("Post updated")
+        toastMaker(getString(R.string.post_updated))
     }
 }

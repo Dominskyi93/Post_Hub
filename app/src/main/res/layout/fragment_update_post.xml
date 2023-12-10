@@ -2,9 +2,7 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
-
     <data>
-
         <variable
             name="viewModel"
             type="com.example.posthub.core.ui.viewModels.UpdatePostViewModel" />
@@ -14,7 +12,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
-
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_photos_items"
@@ -34,37 +31,27 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"/>
 
-<!--        <androidx.recyclerview.widget.RecyclerView-->
-<!--            android:id="@+id/rv_colors_items"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="100dp"-->
-<!--            android:orientation="horizontal"-->
-<!--            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"-->
-<!--            app:layout_constraintBottom_toBottomOf="parent"-->
-<!--            app:layout_constraintEnd_toEndOf="parent"-->
-<!--            app:layout_constraintStart_toStartOf="parent" />-->
-
-
         <EditText
             android:id="@+id/et_comment"
             android:layout_width="match_parent"
-            android:layout_height="67dp"
-            android:hint="Comment"
+            android:layout_height="72dp"
+            android:hint="@string/comment"
             android:ems="10"
-            android:inputType="text" />
-
+            android:inputType="text"
+            android:importantForAutofill="no" />
 
         <Button
             android:id="@+id/save_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Save" />
+            style="@style/MyButtonStyle"
+            android:text="@string/save" />
         <Button
             android:id="@+id/b_cancel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Cancel" />
-
+            style="@style/MyButtonStyle"
+            android:text="@string/cancel" />
 
     </LinearLayout>
 </layout>

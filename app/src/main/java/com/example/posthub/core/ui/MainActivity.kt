@@ -6,9 +6,7 @@ import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
-import androidx.databinding.DataBindingUtil.setContentView
 import androidx.navigation.NavController
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import com.example.posthub.R
 import com.example.posthub.domain.AuthRepository
@@ -63,7 +61,7 @@ class MainActivity : AppCompatActivity() {
     private fun logout() {
         authRepository.signOut()
         navController.navigate(R.id.authorizationFragment)
-        textMessage("You have left your account!")
+        textMessage(getString(R.string.you_have_left_your_account))
         navController.popBackStack(R.id.authorizationFragment, false)
     }
 }

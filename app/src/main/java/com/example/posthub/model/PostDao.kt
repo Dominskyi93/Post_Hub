@@ -10,7 +10,7 @@ import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface PostDao {
-    @Query("SELECT * FROM posts ORDER BY date DESC")
+    @Query("SELECT * FROM posts ORDER BY createDate DESC")
     fun getAllPosts(): Flow<List<Post>>
 
     @Update

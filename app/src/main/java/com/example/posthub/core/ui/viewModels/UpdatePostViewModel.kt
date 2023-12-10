@@ -1,21 +1,19 @@
 package com.example.posthub.core.ui.viewModels
 
 import android.app.Application
-import androidx.appcompat.app.AlertDialog
-import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.posthub.model.entity.Post
 import com.example.posthub.retrofit.Photo
-import com.example.posthub.util.Colors
 import com.example.posthub.util.RetrofitInstance
 import com.example.posthub.util.RoomModule
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import java.lang.RuntimeException
 import javax.inject.Inject
 
 enum class DownloadStatus {
@@ -29,29 +27,8 @@ class UpdatePostViewModel @Inject constructor(application: Application) : ViewMo
     private val db = RoomModule.provideDatabase(application)
     private val _status = MutableLiveData<DownloadStatus>()
     val status: LiveData<DownloadStatus> = _status
-
     private val _photos = MutableLiveData<List<Photo>>()
     val photos: LiveData<List<Photo>> = _photos
-
-    private val selectedColor = MutableLiveData<Colors>()
-    private val photoColor = MutableLiveData<Int>()
-    private val comment = MutableLiveData<String>()
-
-    fun getSelectedColor(): LiveData<Colors> = selectedColor
-    fun getPhotoColor(): LiveData<Int> = photoColor
-    fun getComment(): LiveData<String> = comment
-
-    fun setSelectedColor(color: Colors) {
-        selectedColor.value = color
-    }
-
-    fun setPhotoColor(color: Int) {
-        photoColor.value = color
-    }
-
-    fun setComment(commentText: String) {
-        comment.value = commentText
-    }
 
     init {
         getPhotos()
@@ -64,7 +41,7 @@ class UpdatePostViewModel @Inject constructor(application: Application) : ViewMo
                     db.getDao().updatePost(post)
                 }
             } catch (e: Exception) {
-                // Handle the exception
+                _status.value = DownloadStatus.ERROR
             }
         }
     }
@@ -77,7 +54,7 @@ class UpdatePostViewModel @Inject constructor(application: Application) : ViewMo
                 _status.value = DownloadStatus.DONE
             } catch (e: Exception) {
                 _status.value = DownloadStatus.ERROR
-                _photos.value = emptyList()  // Замінено на emptyList() для більш читабельності
+                _photos.value = emptyList()
             }
         }
     }
@@ -89,26 +66,8 @@ class UpdatePostViewModel @Inject constructor(application: Application) : ViewMo
                     db.getDao().createPost(post)
                 }
             } catch (e: Exception) {
-                // Handle the exception
+                throw RuntimeException("Cannot insert the data")
             }
         }
     }
-
-//    private fun showExitConfirmationDialog(post: Post) {
-//        val builder = AlertDialog.Builder(requireContext())
-//        builder.setTitle("Leave editing?")
-//        builder.setMessage("Do you want to save changes before leaving?")
-//        builder.setPositiveButton("Save and exit") { _, _ ->
-//            saveAndExit(post)
-//        }
-//        builder.setNegativeButton("Discard changes") { _, _ ->
-//            navigateFromUpdateToHome()
-//        }
-//        builder.setNeutralButton("Continue editing") { dialog, _ ->
-//            dialog.dismiss()
-//        }
-//        builder.create().show()
-//    }
-
 }
-

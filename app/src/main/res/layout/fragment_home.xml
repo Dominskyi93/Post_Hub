@@ -12,7 +12,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_post"
             android:layout_width="match_parent"
@@ -29,7 +28,7 @@
             android:layout_margin="30dp"
             android:backgroundTint="@color/dark_primary_color"
             android:clickable="true"
-            android:contentDescription="Add new post"
+            android:contentDescription="@string/add_new_post"
             app:layout_behavior="com.google.android.material.behavior.HideBottomViewOnScrollBehavior"
             app:srcCompat="@drawable/ic_add_image" />
 

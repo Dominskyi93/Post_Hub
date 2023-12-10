@@ -1,7 +1,6 @@
 package com.example.posthub.domain
 
 abstract class User {
-
     abstract val email: String
     abstract val id: String
 

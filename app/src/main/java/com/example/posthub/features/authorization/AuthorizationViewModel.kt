@@ -10,11 +10,6 @@ import javax.inject.Inject
 class AuthorizationViewModel @Inject constructor(private val authRepository: AuthRepository) :
     BaseViewModel() {
 
-
     override val sendRequest: suspend (String, String) -> AuthResult =
         { email, password -> authRepository.signInWithEmailAndPassword(email, password) }
-
-
-
-
 }

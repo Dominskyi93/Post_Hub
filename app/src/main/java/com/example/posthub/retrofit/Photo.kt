@@ -10,4 +10,3 @@ data class Photo(
     val url: String,
     @Json(name = "download_url") val downloadUrl: String
 )
-

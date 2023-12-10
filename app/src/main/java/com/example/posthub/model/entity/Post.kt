@@ -14,6 +14,7 @@ data class Post(
     @PrimaryKey(autoGenerate = true) var id: Int? = null,
     var photo: String,
     var comment: String,
-    var date: LocalDate,
-    var color: Int
-): Parcelable
+    var createDate: LocalDate,
+    var color: Int,
+    var editDate: LocalDate?
+) : Parcelable

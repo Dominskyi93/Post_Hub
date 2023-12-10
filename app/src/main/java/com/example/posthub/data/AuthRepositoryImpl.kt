@@ -6,7 +6,6 @@ import com.google.firebase.auth.FirebaseAuth
 import kotlinx.coroutines.tasks.await
 import javax.inject.Inject
 
-
 class AuthRepositoryImpl @Inject constructor(private val auth: FirebaseAuth) : AuthRepository {
 
     override suspend fun signInWithEmailAndPassword(email: String, password: String): AuthResult {
@@ -30,5 +29,4 @@ class AuthRepositoryImpl @Inject constructor(private val auth: FirebaseAuth) : A
     override fun signOut() {
         auth.signOut()
     }
-
 }

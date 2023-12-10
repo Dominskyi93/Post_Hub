@@ -14,5 +14,4 @@ import com.example.posthub.model.entity.Post
 @TypeConverters(Converter::class)
 abstract class PostDatabase : RoomDatabase() {
     abstract fun getDao(): PostDao
-
 }

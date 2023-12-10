@@ -26,11 +26,4 @@ class AuthModule {
     fun provideAppContext(application: Application): Context {
         return application.applicationContext
     }
-
-//    @Provides
-//    @Singleton
-//    @ApplicationContext
-//    fun getDataBaseInstance(application: Application): AppDatabase {
-//        return AppDatabase.getDataBase(application)
-//    }
 }
