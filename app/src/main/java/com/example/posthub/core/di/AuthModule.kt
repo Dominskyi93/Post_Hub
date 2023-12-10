@@ -2,7 +2,6 @@ package com.example.posthub.core.di
 
 import android.app.Application
 import android.content.Context
-import com.example.posthub.model.room.AppDatabase
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase

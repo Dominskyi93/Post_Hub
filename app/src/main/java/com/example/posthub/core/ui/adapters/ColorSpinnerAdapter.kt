@@ -4,9 +4,7 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ArrayAdapter
 import android.widget.BaseAdapter
-import android.widget.TextView
 import androidx.core.content.ContextCompat
 import com.example.posthub.R
 import com.example.posthub.util.Colors
@@ -24,8 +22,8 @@ class ColorSpinnerAdapter(private val context: Context, private val items: List<
         val colorView: View = view.findViewById(R.id.colorView)
 
         val item = getItem(position) as Colors
-        colorView.setBackgroundColor(ContextCompat.getColor(context, item.colorValue))
-
+        val color = ContextCompat.getColor(context, item.colorValue)
+        colorView.setBackgroundColor(color)
         return view
     }
 }

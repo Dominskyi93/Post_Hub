@@ -11,7 +11,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.posthub.R
 import com.example.posthub.core.ui.viewModels.HomeViewModel
 import com.example.posthub.core.ui.adapters.PostAdapter
-import com.example.posthub.databinding.FragmentHomeBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -22,7 +21,7 @@ class HomeFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val binding = FragmentHomeBinding.inflate(inflater)
+        val binding = com.example.posthub.databinding.FragmentHomeBinding.inflate(inflater)
         val recyclerView = binding.rvPost
         binding.lifecycleOwner = this
         binding.viewModel = viewModel

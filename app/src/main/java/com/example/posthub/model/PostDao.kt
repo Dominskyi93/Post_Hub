@@ -9,8 +9,8 @@ import com.example.posthub.model.entity.Post
 import kotlinx.coroutines.flow.Flow
 
 @Dao
-interface PostsDao {
-    @Query("SELECT * FROM posts")
+interface PostDao {
+    @Query("SELECT * FROM posts ORDER BY date DESC")
     fun getAllPosts(): Flow<List<Post>>
 
     @Update

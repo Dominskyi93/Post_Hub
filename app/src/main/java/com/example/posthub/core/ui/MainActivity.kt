@@ -65,6 +65,5 @@ class MainActivity : AppCompatActivity() {
         navController.navigate(R.id.authorizationFragment)
         textMessage("You have left your account!")
         navController.popBackStack(R.id.authorizationFragment, false)
-
     }
 }

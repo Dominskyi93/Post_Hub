@@ -3,6 +3,7 @@ package com.example.posthub.core.ui.adapters
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.ListFragment
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.DiffUtil
@@ -12,6 +13,9 @@ import com.example.posthub.R
 import com.example.posthub.core.ui.fragments.HomeFragmentDirections
 import com.example.posthub.databinding.PostItemBinding
 import com.example.posthub.model.entity.Post
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
+import java.util.Locale
 
 class PostAdapter :
     ListAdapter<Post, PostAdapter.PostViewHolder>(DiffCallback) {
@@ -49,12 +53,25 @@ class PostAdapter :
             val bundle: Bundle = Bundle()
             container.setOnClickListener {
                 val action = HomeFragmentDirections.actionHomeFragmentToCreatePostFragment(post)
-//                bundle.putParcelable("postArg", post)
                 it.findNavController().navigate(action)
             }
-//             cardView.setCardBackgroundColor(post.color)
+
+            val color = try {
+                ContextCompat.getColor(holder.itemView.context, post.color)
+            } catch (e: Exception) {
+                R.color.black
+            }
+
+            cardView.setCardBackgroundColor(color)
             commentTextView.text = post.comment
-            createDate.text = post.date.toString()
+            val date = formatLocalDate(post.date)
+            createDate.text = "Edit: $date"
+
         }
+    }
+
+    private fun formatLocalDate(localDate: LocalDate): String {
+        val formatter = DateTimeFormatter.ofPattern("d MMM", Locale.ENGLISH)
+        return localDate.format(formatter)
     }
 }

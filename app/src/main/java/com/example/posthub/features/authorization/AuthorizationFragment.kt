@@ -14,6 +14,7 @@ import com.example.posthub.core.ui.MainActivity
 import com.example.posthub.core.ui.fragments.BaseFragment
 import com.example.posthub.data.AuthResult
 import com.example.posthub.databinding.FragmentAuthorizationBinding
+import com.google.firebase.auth.FirebaseAuth
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -29,6 +30,7 @@ class AuthorizationFragment : BaseFragment<FragmentAuthorizationBinding>() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+//        FirebaseAuth.getInstance().currentUser
         val inputList = listOf(
             binding.authMail,
             binding.authPassword

@@ -32,20 +32,29 @@
 
         <action
             android:id="@+id/action_homeFragment_to_createPostFragment"
-            app:destination="@id/createPostFragment" />
+            app:destination="@id/updatePostFragment" />
     </fragment>
 
     <fragment
-        android:id="@+id/createPostFragment"
-        android:name="com.example.posthub.core.ui.fragments.CreatePostFragment"
-        tools:layout="@layout/fragment_create_post">
+        android:id="@+id/updatePostFragment"
+        android:name="com.example.posthub.core.ui.fragments.UpdatePostFragment"
+        tools:layout="@layout/fragment_update_post">
         <action
-            android:id="@+id/action_createPostFragment_to_homeFragment"
+            android:id="@+id/action_updatePostFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
 
-        <!-- Додайте аргумент для цієї акції -->
         <argument
             android:name="postArg"
+            app:nullable="true"
+            android:defaultValue="@null"
             app:argType="com.example.posthub.model.entity.Post"/>
+    </fragment>
+    <fragment
+        android:id="@+id/toolbarFragment"
+        android:name="com.example.posthub.core.ui.fragments.ToolbarFragment"
+        android:label="ToolbarFragment" >
+        <action
+            android:id="@+id/action_toolbarFragment_to_authorizationFragment"
+            app:destination="@id/authorizationFragment" />
     </fragment>
 </navigation>
