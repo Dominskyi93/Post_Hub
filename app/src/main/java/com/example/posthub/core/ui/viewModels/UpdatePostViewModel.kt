@@ -27,8 +27,6 @@ enum class DownloadStatus {
 @HiltViewModel
 class UpdatePostViewModel @Inject constructor(application: Application) : ViewModel() {
     private val db = RoomModule.provideDatabase(application)
-
-    //    val db = RoomModule.provideDatabase()
     private val _status = MutableLiveData<DownloadStatus>()
     val status: LiveData<DownloadStatus> = _status
 
@@ -36,8 +34,8 @@ class UpdatePostViewModel @Inject constructor(application: Application) : ViewMo
     val photos: LiveData<List<Photo>> = _photos
 
     private val selectedColor = MutableLiveData<Colors>()
-    private val photoColor = MutableLiveData<Int>()  // Додано для збереження кольору фото
-    private val comment = MutableLiveData<String>()  // Додано для збереження коментаря
+    private val photoColor = MutableLiveData<Int>()
+    private val comment = MutableLiveData<String>()
 
     fun getSelectedColor(): LiveData<Colors> = selectedColor
     fun getPhotoColor(): LiveData<Int> = photoColor
