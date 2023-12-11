@@ -1,5 +1,6 @@
 package com.example.posthub.core.ui.adapters
 
+import android.content.res.Resources
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
@@ -54,9 +55,9 @@ class PostAdapter :
                 it.findNavController().navigate(action)
             }
             val color = try {
-                ContextCompat.getColor(holder.itemView.context, post.color)
-            } catch (e: Exception) {
-                R.color.black
+                ContextCompat.getColor(itemView.context, post.color)
+            } catch (e: Resources.NotFoundException) {
+                ContextCompat.getColor(itemView.context, R.color.black)
             }
             cardView.setCardBackgroundColor(color)
             commentTextView.text = post.comment
