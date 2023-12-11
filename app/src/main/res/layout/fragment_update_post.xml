@@ -16,8 +16,8 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_photos_items"
-            android:layout_width="match_parent"
-            android:layout_height="271dp"
+            android:layout_width="422dp"
+            android:layout_height="193dp"
             android:layout_marginTop="64dp"
             android:orientation="horizontal"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
