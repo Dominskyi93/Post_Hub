@@ -1,5 +1,6 @@
 package com.example.posthub.core.ui
 
+import android.app.Activity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
@@ -34,25 +35,24 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        val currentFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment)
-        if (currentFragment is AuthorizationFragment) {
-            return false
-        }
-        val inflater = menuInflater
-        inflater.inflate(R.menu.toolbar_menu, menu)
+        menuInflater.inflate(R.menu.toolbar_menu, menu)
         return true
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return when (item.itemId) {
-            R.id.logout -> {
-                logout()
-                true
-            }
-
-            else -> super.onOptionsItemSelected(item)
-        }
+        if (item.itemId == R.id.logout) logout()
+        return true
     }
+
+    override fun onPrepareOptionsMenu(menu: Menu?) : Boolean {
+        super.onPrepareOptionsMenu(menu)
+
+        val currentFragment = this.supportFragmentManager.findFragmentById(R.id.nav_host_fragment)
+
+        menu?.findItem(R.id.logout)?.isVisible = currentFragment !is AuthorizationFragment
+        return true
+    }
+
 
     private fun textMessage(message: String) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()

@@ -36,6 +36,7 @@ class AuthorizationFragment : BaseFragment<FragmentAuthorizationBinding>() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         binding.let { binding ->
             viewModel.let { viewModel ->
                 sharedPrefs = requireContext().getSharedPreferences(PREFS_FILE, MODE_PRIVATE)
