@@ -1,6 +1,5 @@
-package com.example.posthub.features.authorization
+package com.example.posthub.core.ui.viewModels
 
-import com.example.posthub.core.ui.viewModels.BaseViewModel
 import com.example.posthub.data.AuthResult
 import com.example.posthub.domain.AuthRepository
 import dagger.hilt.android.lifecycle.HiltViewModel

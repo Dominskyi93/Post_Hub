@@ -6,8 +6,10 @@ import androidx.room.PrimaryKey
 import kotlinx.parcelize.Parcelize
 import java.time.LocalDate
 
+private const val TABLE_NAME = "posts"
+
 @Entity(
-    tableName = "posts"
+    tableName = TABLE_NAME
 )
 @Parcelize
 data class Post(

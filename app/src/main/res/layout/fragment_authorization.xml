@@ -5,7 +5,7 @@
     style="@style/AppTheme"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".features.authorization.AuthorizationFragment">
+    tools:context=".core.ui.fragments.AuthorizationFragment">
 
     <com.example.posthub.features.input.PasswordInput
         android:id="@+id/auth_password"

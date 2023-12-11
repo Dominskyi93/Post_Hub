@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
         <variable
             name="photo"
             type="com.example.posthub.retrofit.Photo" />
@@ -43,7 +42,6 @@
                 app:imageUrl="@{photo.downloadUrl}"
                 tools:src="@tools:sample/backgrounds/scenic"
                 android:importantForAccessibility="no">
-
             </ImageView>
         </LinearLayout>
     </androidx.cardview.widget.CardView>

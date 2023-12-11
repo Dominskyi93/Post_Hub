@@ -10,7 +10,7 @@ class PasswordInput @JvmOverloads constructor(
     defStyleAttr: Int = 0
 ) : CustomInputLayout(context, attrs, defStyleAttr) {
 
-    override val errorMessageId: Int = R.string.password_error
+    override val errorMessageId: Int = R.string.password_incorrect_message
 
     override fun innerIsValid(): Boolean {
         return text().matches(Regex(PASSWORD_PATTERN))

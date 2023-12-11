@@ -1,16 +1,18 @@
-package com.example.posthub.features.registration
+package com.example.posthub.core.ui.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.Menu
+import android.view.MenuInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.posthub.R
-import com.example.posthub.core.ui.fragments.BaseFragment
 import com.example.posthub.data.AuthResult
 import com.example.posthub.databinding.FragmentRegistrationBinding
+import com.example.posthub.core.ui.viewModels.RegistrationViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -21,6 +23,11 @@ class RegistrationFragment : BaseFragment<FragmentRegistrationBinding>() {
 
         }
     private val viewModel: RegistrationViewModel by viewModels()
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setHasOptionsMenu(true)
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -53,5 +60,13 @@ class RegistrationFragment : BaseFragment<FragmentRegistrationBinding>() {
                 )
             }
         }
+        binding.cancelButton.setOnClickListener {
+            findNavController().navigate(R.id.action_registrationFragment_to_authorizationFragment)
+        }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        menu.clear()
+        super.onCreateOptionsMenu(menu, inflater)
     }
 }

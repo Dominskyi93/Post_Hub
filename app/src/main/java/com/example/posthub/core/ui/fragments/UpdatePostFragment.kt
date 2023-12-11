@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.LiveData
@@ -40,7 +41,18 @@ class UpdatePostFragment : Fragment() {
         binding.etComment.setText(args.postArg?.comment)
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
+        setupPhotoRecyclerView(binding)
+        setupColorSpinner(binding)
+        binding.bCancel.setOnClickListener {
+            alertDialog()
+        }
+        binding.saveButton.setOnClickListener {
+            createOrUpdatePost(binding)
+        }
+        return binding.root
+    }
 
+    private fun setupPhotoRecyclerView(binding: FragmentUpdatePostBinding) {
         val rvPhotosAdapter = PhotoAdapter()
         binding.rvPhotosItems.adapter = rvPhotosAdapter
         rvPhotosAdapter.setOnItemClickListener(object : PhotoAdapter.OnItemClickListener {
@@ -48,7 +60,9 @@ class UpdatePostFragment : Fragment() {
                 _selectedPhoto.value = photo.downloadUrl
             }
         })
+    }
 
+    private fun setupColorSpinner(binding: FragmentUpdatePostBinding) {
         val colorSpinner = binding.colorSpinner
         val colorAdapter = ColorSpinnerAdapter(requireContext(), Colors.entries)
         colorSpinner.adapter = colorAdapter
@@ -64,36 +78,43 @@ class UpdatePostFragment : Fragment() {
 
             override fun onNothingSelected(parentView: AdapterView<*>?) {}
         }
+    }
 
-        binding.bCancel.setOnClickListener {
-            navigateFromUpdateToHome()
+    private fun createOrUpdatePost(binding: FragmentUpdatePostBinding) {
+        val newComment = binding.etComment.text.toString()
+        val newColor = selectedColor.value!!.colorValue
+        val photo: String = selectedPhoto.value ?: args.postArg?.photo ?: ""
+        val createDate = args.postArg?.createDate ?: LocalDate.now()
+        val post = Post(
+            null,
+            photo,
+            newComment,
+            createDate,
+            newColor,
+            null
+        )
+        if (args.postArg?.id == null) {
+            createPost(post)
+        } else {
+            post.editDate = LocalDate.now()
+            updatePost(post)
         }
-
-        binding.saveButton.setOnClickListener {
-            val newComment = binding.etComment.text.toString()
-            val newColor = selectedColor.value!!.colorValue
-            val photo: String = selectedPhoto.value ?: args.postArg?.photo ?: ""
-            val createDate = args.postArg?.createDate ?: LocalDate.now()
-            val post = Post(
-                null,
-                photo,
-                newComment,
-                createDate,
-                newColor,
-                null
-            )
-            if (args.postArg?.id == null) {
-                createPost(post)
-            } else {
-                post.editDate = LocalDate.now()
-                updatePost(post)
-            }
-        }
-        return binding.root
     }
 
     private fun navigateFromUpdateToHome() {
         findNavController().navigate(R.id.action_updatePostFragment_to_homeFragment)
+    }
+
+    private fun alertDialog() {
+        val builder = AlertDialog.Builder(requireContext())
+        builder.setMessage("Do you want to cancel the edit?")
+            .setCancelable(false)
+            .setPositiveButton("Yes") { _, _ ->
+                findNavController().navigate(R.id.action_updatePostFragment_to_homeFragment)
+            }
+            .setNegativeButton("No") { dialog, _ ->
+                dialog.dismiss()
+            }.create().show()
     }
 
     private fun toastMaker(text: String) {

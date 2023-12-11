@@ -17,6 +17,7 @@ import java.time.format.DateTimeFormatter
 import java.util.Locale
 
 private const val DATE_PATTERN = "d MMM"
+private const val EMPTY_STRING = ""
 
 class PostAdapter :
     ListAdapter<Post, PostAdapter.PostViewHolder>(DiffCallback) {
@@ -68,7 +69,7 @@ class PostAdapter :
     }
 
     private fun formatLocalDate(localDate: LocalDate?): String {
-        if (localDate == null) return ""
+        if (localDate == null) return EMPTY_STRING
         val formatter = DateTimeFormatter.ofPattern(DATE_PATTERN, Locale.ENGLISH)
         return localDate.format(formatter)
     }

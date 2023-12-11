@@ -2,13 +2,14 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
+
     <data>
         <variable
             name="viewModel"
             type="com.example.posthub.core.ui.viewModels.UpdatePostViewModel" />
     </data>
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
@@ -16,42 +17,74 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_photos_items"
             android:layout_width="match_parent"
-            android:layout_height="244dp"
-            android:orientation="horizontal"
+            android:layout_height="271dp"
             android:layout_marginTop="64dp"
+            android:orientation="horizontal"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
             app:listData="@{viewModel.photos}" />
+
+        <ImageView
+            android:id="@+id/status_image"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:layout_marginTop="64dp"
+            app:downloadStatus="@{viewModel.status}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0"
+            android:importantForAccessibility="no" />
 
         <Spinner
             android:id="@+id/colorSpinner"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"/>
+            android:layout_width="410dp"
+            android:layout_height="87dp"
+            android:layout_marginTop="28dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/rv_photos_items" />
 
         <EditText
             android:id="@+id/et_comment"
             android:layout_width="match_parent"
-            android:layout_height="72dp"
-            android:hint="@string/comment"
+            android:layout_height="98dp"
             android:ems="10"
+            android:hint="@string/write_something"
+            android:importantForAutofill="no"
             android:inputType="text"
-            android:importantForAutofill="no" />
+            android:maxLength="50"
+            app:layout_constraintTop_toBottomOf="@+id/colorSpinner"
+            tools:layout_editor_absoluteX="0dp" />
+
 
         <Button
             android:id="@+id/save_button"
+            style="@style/MyButtonStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            style="@style/MyButtonStyle"
-            android:text="@string/save" />
+            android:layout_marginTop="30dp"
+            android:text="@string/save"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/et_comment" />
+
         <Button
             android:id="@+id/b_cancel"
+            style="@style/MyButtonStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            style="@style/MyButtonStyle"
-            android:text="@string/cancel" />
+            android:text="@string/cancel"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/save_button" />
 
-    </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

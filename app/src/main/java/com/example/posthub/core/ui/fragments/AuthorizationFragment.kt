@@ -1,9 +1,11 @@
-package com.example.posthub.features.authorization
+package com.example.posthub.core.ui.fragments
 
 import android.content.Context.MODE_PRIVATE
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.Menu
+import android.view.MenuInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
@@ -11,7 +13,7 @@ import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.posthub.R
-import com.example.posthub.core.ui.fragments.BaseFragment
+import com.example.posthub.core.ui.viewModels.AuthorizationViewModel
 import com.example.posthub.data.AuthResult
 import com.example.posthub.databinding.FragmentAuthorizationBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -21,7 +23,6 @@ private const val MAIL_KEY = "pref_name"
 private const val PASS_KEY = "pref_pass"
 private const val CHECK_KEY = "pref_check"
 private const val EMPTY_STRING = ""
-
 
 @AndroidEntryPoint
 class AuthorizationFragment : BaseFragment<FragmentAuthorizationBinding>() {
@@ -33,6 +34,11 @@ class AuthorizationFragment : BaseFragment<FragmentAuthorizationBinding>() {
     private lateinit var mailEditText: EditText
     private lateinit var passwordEditText: EditText
     private val viewModel: AuthorizationViewModel by viewModels()
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setHasOptionsMenu(true)
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -67,7 +73,7 @@ class AuthorizationFragment : BaseFragment<FragmentAuthorizationBinding>() {
                                 )
                                 editor.putBoolean(CHECK_KEY, true)
                                 editor.apply()
-                                showToast("settings_have_been_saved")
+                                showToast(getString(R.string.settings_saved))
                             } else {
                                 sharedPrefs.edit().clear().apply()
                             }
@@ -92,6 +98,11 @@ class AuthorizationFragment : BaseFragment<FragmentAuthorizationBinding>() {
                 }
             }
         }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        menu.clear()
+        super.onCreateOptionsMenu(menu, inflater)
     }
 
     private fun getPreferences() {
