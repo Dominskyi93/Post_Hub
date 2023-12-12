@@ -40,7 +40,7 @@ The app consists of four screens: Login, Registration, Post List, and Post Editi
 - Use a dropdown menu for selecting colors.
 - Use a horizontal list for selecting images.
 
-![Editing_screen.png](readme_photos%2FEditing_screen.png)
+![Editing_screen.png](readme_photos%2FEditing_screen.png )
 
 ## Technical Details
 
