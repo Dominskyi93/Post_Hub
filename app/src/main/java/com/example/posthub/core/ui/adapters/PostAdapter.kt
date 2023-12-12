@@ -19,8 +19,8 @@ import java.util.Locale
 private const val DATE_PATTERN = "d MMM"
 private const val EMPTY_STRING = ""
 
-class PostAdapter :
-    ListAdapter<Post, PostAdapter.PostViewHolder>(DiffCallback) {
+class PostAdapter : ListAdapter<Post, PostAdapter.PostViewHolder>(DiffCallback) {
+
     class PostViewHolder(private var binding: PostItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
         val commentTextView = binding.tvComment
