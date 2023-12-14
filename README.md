@@ -34,7 +34,6 @@ The app consists of four screens: Login, Registration, Post List, and Post Editi
 ### Post Editing Screen
 
 - Create a new post or edit an existing one.
-- Save button in the toolbar to save the post.
 - Prompt user with a notification if they try to leave without saving changes.
 - Posts consist of a comment, creation date, last edit date (nullable), image (URL), and color.
 - Use a dropdown menu for selecting colors.
